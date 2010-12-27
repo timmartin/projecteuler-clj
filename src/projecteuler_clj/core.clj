@@ -1,0 +1,1 @@
+(ns projecteuler-clj.core)
