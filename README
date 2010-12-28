@@ -1,13 +1,11 @@
 # projecteuler-clj
 
-FIXME: write description
-
-## Usage
-
-FIXME: write
+Working my way through the Project Euler questions using Clojure. This
+is purely an exercise in teaching myself to use Clojure, it won't be
+of any use to anyone else.
 
 ## License
 
-Copyright (C) 2010 FIXME
+Copyright (C) 2010 Tim Martin
 
 Distributed under the Eclipse Public License, the same as Clojure.
