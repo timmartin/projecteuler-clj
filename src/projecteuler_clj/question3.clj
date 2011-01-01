@@ -26,10 +26,23 @@ based on a simple range calculation"
   [n]
   (take-while (fn [x] (<= x n)) (lazy-primes)))
 
+(defn candidate-smallest-prime-factors
+  "Return a lazy seq of primes that could be the smallest prime factor of the specified integer (the smallest prime factor must be less than sqrt(n))"
+  [n]
+  (take-while (fn [x] (<= (* x x) n)) (lazy-primes)))
+
 (defn prime-factors
   "Return a lazy seq of prime factors of the specified integer"
   [n]
   (filter (fn [x] (divisible-by n x)) (candidate-prime-factors n)))
+
+(defn smallest-prime-factor
+  [n]
+  (let [factors
+		(filter (fn [x] (divisible-by n x)) (candidate-smallest-prime-factors n))]
+	(if (empty? factors)
+	  n
+	  (first factors))))
 
 (defn eliminate-factors
   "Return an integer that is the result of dividing out any factors of p from n"
@@ -41,8 +54,7 @@ based on a simple range calculation"
 (defn largest-prime-factor
   "Find the largest prime factor of n, which must be an integer greater than 1"
   [n]
-  (let [factors (prime-factors n)
-		p (first factors)
+  (let [p (smallest-prime-factor n)
 		reduced (eliminate-factors p n)]
 	(if (= 1 reduced)
 	  p
