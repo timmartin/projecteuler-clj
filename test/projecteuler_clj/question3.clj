@@ -22,6 +22,10 @@
   (is (= (list 2 3) (prime-factors 6)))
   (is (= (list 3 5 7) (prime-factors (* 3 5 7 7)))))
 
+(deftest test-eliminate-factors
+  (is (= 3 (eliminate-factors 5 75)))
+  (is (= 15 (eliminate-factors 2 15))))
+
 (deftest test-largest-prime-factor
   (is (= 3 (largest-prime-factor 12)))
   (is (= 7 (largest-prime-factor 7)))
